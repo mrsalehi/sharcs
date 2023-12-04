@@ -1,0 +1,2 @@
+// format will be each line is the path to a config file. Then run_mulitple_hparams will read multiple config files and starts the runs.
+

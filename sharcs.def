@@ -1,0 +1,39 @@
+Bootstrap: docker
+From: nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
+
+%setup
+    echo "SETUP"
+    echo "$HOME"
+    echo `pwd`
+
+%files
+    /tmp/requirements.txt
+
+%post
+    # Downloads the latest package lists (important).
+    apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        python3 \
+        python3-pip \
+        python3-setuptools
+
+    # set python3 to be default python
+    update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+    # Install dependencies
+    pip install -r /tmp/requirements.txt
+
+    # Reduce the size of the image by deleting the package lists we downloaded,
+    # which are useless now.
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /root/.cache && \
+    rm -rf /var/lib/apt/lists/*
+
+    # see if torch works
+    python -m torch.utils.collect_env
+
+    python -c 'import site; print(site.getsitepackages())'
+
+%environment
+    export PATH="$HOME/.local/bin:$PATH"

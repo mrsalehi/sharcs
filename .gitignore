@@ -1,0 +1,15 @@
+nlp/output
+nlp/slurm_outputs
+**/__pycache__
+nlp/glue
+.vscode
+nlp/models/
+**/wandb
+**/.ipynb_checkpoints/
+glue/
+output
+models/
+hparams
+*.ipynb
+slurm_outputs/
+*.sif
