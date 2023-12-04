@@ -8,6 +8,7 @@ From: nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
 
 %files
     /tmp/requirements.txt
+    /tmp/sharcs/*
 
 %post
     # Downloads the latest package lists (important).
@@ -22,6 +23,8 @@ From: nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
 
     # Install dependencies
     pip install -r /tmp/requirements.txt
+    cd /tmp/sharcs
+    pip install -e .
 
     # Reduce the size of the image by deleting the package lists we downloaded,
     # which are useless now.
