@@ -1,8 +1,0 @@
-Metadata-Version: 2.1
-Name: sharcs
-Version: 0.1.0
-Summary: SHARCS: Routing to sub-networks with varying widths for sample adaptive inference efficiency.
-Author: SHARCS team
-Requires-Python: >=3.8,<4.0
-Provides-Extra: dev
-Provides-Extra: test
