@@ -1,4 +1,0 @@
-buckets:
-  confidence_threshs:
-    1/6: [0.8, 1.0]
-    1/4: [0.0, 0.8]
